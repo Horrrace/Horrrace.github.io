@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#202d3b">
+  <title>Horace — 游戏测试作品集</title>
+  <meta name="description" content="Horace 的游戏测试求职作品集：LOL 风格战斗 Demo 与云上牧场 PastureLand，两段完整实机视频与项目介绍。">
+  <meta property="og:title" content="Horace — 游戏测试作品集">
+  <meta property="og:description" content="从操作反馈到玩法闭环，在两款游戏 Demo 中观察游戏体验。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://horrrace.github.io/media/pasture.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css?v=qa-notes-20260906">
+</head>
+<body>
+<a class="skip" href="#projects">跳转到项目</a>
+<header class="header wrap">
+  <a class="brand" href="#top" aria-label="Horace 作品集首页"><span class="brand-symbol" aria-hidden="true">h.</span> Horace<span class="brand-suffix"> / 作品集</span></a>
+  <nav aria-label="主导航"><a href="#projects">项目作品</a><a href="#perspective">测试视角</a><a class="nav-contact" href="mailto:shr190329@163.com">联系我 <span aria-hidden="true">↗</span></a></nav>
+</header>
+<main id="top">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="availability"><span aria-hidden="true"></span>求职方向：游戏测试</p>
+      <h1 id="hero-title">认真玩。<br>仔细看。</h1>
+      <p class="intro">我是 Horace。<br>从一次操作的反馈，到一套玩法的闭环，<br class="desktop-break">用 Demo 展示我对游戏的理解与观察。</p>
+      <a class="primary" href="#projects">观看项目 <span aria-hidden="true">↓</span></a>
+      <p class="hero-note">两款游戏原型 / 完整实机录制</p>
+    </div>
+    <div class="hero-art" aria-label="云上牧场与战斗 Demo 游戏画面">
+      <span class="orbit" aria-hidden="true"></span>
+      <a class="shot shot-pasture" href="#pasture" aria-label="查看云上牧场项目"><img src="media/pasture.jpg" alt="云海之上的手绘牧场岛屿" width="1440" height="836"><span>PastureLand <b>云上牧场</b></span></a>
+      <a class="shot shot-arena" href="#arena" aria-label="查看战斗 Demo 项目"><img src="media/arena.jpg?v=20260906-142808" alt="俯视角战斗场景与技能界面" width="1440" height="900"><span>Combat prototype <b>战斗 Demo</b></span></a>
+      <span class="art-caption">Play. Observe. Understand.</span>
+      <span class="cross cross-one" aria-hidden="true">+</span><span class="cross cross-two" aria-hidden="true">+</span>
+    </div>
+  </section>
+  <section id="projects" class="projects wrap" aria-labelledby="projects-title">
+    <div class="section-heading"><h2 id="projects-title">项目作品<span>Selected work</span></h2><p>从即时战斗，到牧场经营。</p></div>
+    <article id="arena" class="project" aria-labelledby="arena-title">
+      <div class="project-heading"><div><p class="category">战斗原型 / Unity</p><h3 id="arena-title">LOL 风格战斗 Demo</h3></div><span class="duration">实机演示 <b>01:09</b></span></div>
+      <div class="player arena-player"><video controls playsinline preload="none" poster="media/arena.jpg?v=20260906-142808" aria-label="LOL 风格战斗 Demo 实机视频" aria-describedby="arena-description"><source src="media/arena.mp4?v=20260906-142808" type="video/mp4">你的浏览器不支持视频播放，请<a href="media/arena.mp4?v=20260906-142808">打开视频文件</a>。</video></div>
+      <div class="project-description"><div><p class="small-heading">关于这个 Demo</p><p id="arena-description">一个以 MOBA 操作为参考的俯视角战斗原型。视频展示角色在场景中的移动、技能释放与目标交互，配合生命值、资源条和技能栏呈现战斗状态。这个项目适合从操作输入、技能反馈与场景碰撞之间的关系切入，观察战斗体验是否连贯、信息反馈是否清晰。</p></div><div class="focus"><p class="small-heading">测试关注点</p><ul><li>移动与碰撞</li><li>技能释放反馈</li><li>战斗状态显示</li></ul><a class="video-link" href="media/arena.mp4?v=20260906-142808" target="_blank" rel="noopener">单独打开视频 <span aria-hidden="true">↗</span></a></div></div>
+      <section class="qa-notes" aria-labelledby="arena-qa-title">
+        <div class="qa-heading"><h4 id="arena-qa-title">测试点说明</h4><span>战斗规则、输入边界与状态交互</span></div>
+        <p class="qa-lead">从进入训练场、移动战斗、击杀成长到死亡复活与退出，按玩家流程拆解单机战斗链路。以下摘录自项目测试材料，重点说明如何设计检查与判断预期。</p>
+        <p class="qa-scope"><strong>设计范围</strong>16 个维度 · 128 个测试点 · 20 条详细用例<span>新增测试点与用例待执行；历史验证单独复盘。</span></p>
+        <dl class="qa-topics">
+          <div><dt>输入、移动与碰撞</dt><dd>区分右击地面的移动与右击敌人的攻击；检查 Q 在 0.12 秒、E 在 0.15 秒前后的长短按行为，以及切后台、开菜单、松键后的瞄准清理。覆盖树木、窄缝、地图边缘与闪现落点。</dd></div>
+          <div><dt>技能命中与数值边界</dt><dd>围绕普攻射程 2.1、E 范围 9 的内外边界设计用例；检查 Q 对同一目标只结算一次、E 五枚弹体的命中时序与被动叠层。数值验证需控制回复、目标血量与层数有效期。</dd></div>
+          <div><dt>暂停、死亡与复活交互</dt><dd>重点组合“弹体即将命中时暂停”“按住 E 时英雄死亡”“目标被击杀后迅速复活”，同步检查输入、弹体、伤害、冷却和特效是否残留。这些组合属于待复现风险。</dd></div>
+          <div><dt>恢复、成长与重复结算</dt><dd>检查治疗不超过生命上限、回城取消与完成边界、技能升级上限，以及单次击杀只发放一次金币和成长奖励。伤害计量与升级回复分开核对，避免自然回复干扰判断。</dd></div>
+          <div><dt>HUD 与画面反馈</dt><dd>核对 HP/MP、分段血条、记分板和小地图与真实状态一致；冷却遮罩分别验证就绪、刚释放、半冷却三个状态。画幅、窗口缩放与 DPI 需分别验证，不能只看一张截图。</dd></div>
+          <div><dt>构建、性能与稳定性</dt><dd>设计 Windows 启动退出、频繁施法与复活、反复切换菜单的检查；记录帧时间、内存和对象数量。当前性能数据与长时结果待采集，联网、支付和装备商城不在本 Demo 范围。</dd></div>
+        </dl>
+        <div class="qa-cases">
+          <details><summary><span>历史案例：闪现后，下一次移动会不会回弹？</span><span class="qa-case-state">历史验证</span></summary><div class="qa-case-body"><p>将场景拆成“静止 / 移动 × 近目标 / 远目标”四组，记录闪现位置，再追加一次 CharacterController 移动，检查传送结果是否保持。</p><p>历史记录显示同组场景由 4 FAIL 变为 4 PASS：近点位移 3，远点截断到 5，后续移动不回弹；冷却内重复输入不再位移。树木落点、全方向和地图边缘仍需扩展回归。</p></div></details>
+          <details><summary><span>历史案例：为什么只测半冷却会漏掉问题？</span><span class="qa-case-state">历史验证</span></summary><div class="qa-case-body"><p>旧遮罩公式把“就绪”和“刚释放”时的反馈方向反转，但在半冷却时，新旧公式结果都是 0.5。因此分别检查遮罩比例 0、1、0.5，才能覆盖两个关键端点。</p><p>历史直接冷却断言覆盖 Q，另有五个技能图标与两种画幅的检查；其余技能仍需逐个实际释放补充回归。</p></div></details>
+        </div>
+        <p class="qa-source">依据 2026-09-06《LOL-demo 游戏测试分析报告》《测试点与详细用例》整理。历史案例为既有材料复盘，不计入新增用例通过率。</p>
+      </section>
+    </article>
+    <article id="pasture" class="project pasture-project" aria-labelledby="pasture-title">
+      <div class="project-heading"><div><p class="category">牧场经营 / Godot</p><h3 id="pasture-title">云上牧场 <span>PastureLand</span></h3></div><span class="duration">实机演示 <b>06:34</b></span></div>
+      <div class="player pasture-player"><video controls playsinline preload="none" poster="media/pasture.jpg" aria-label="云上牧场 PastureLand 实机视频" aria-describedby="pasture-description"><source src="media/pasture.mp4" type="video/mp4">你的浏览器不支持视频播放，请<a href="media/pasture.mp4">打开视频文件</a>。</video></div>
+      <div class="project-description"><div><p class="small-heading">关于这个 Demo</p><p id="pasture-description">一款手绘童话风格的云端牧场经营原型。视频从小型浮空岛出发，展示牧场设施、羊群、资源变化与地块扩展，逐步呈现经营过程。这个项目适合围绕资源收支、建造条件与操作提示梳理玩法流程，并进一步关注存档前后状态的一致性。</p></div><div class="focus"><p class="small-heading">测试关注点</p><ul><li>资源与建造条件</li><li>经营流程与提示</li><li>存档状态一致性</li></ul><a class="video-link" href="media/pasture.mp4" target="_blank" rel="noopener">单独打开视频 <span aria-hidden="true">↗</span></a></div></div>
+      <section class="qa-notes" aria-labelledby="pasture-qa-title">
+        <div class="qa-heading"><h4 id="pasture-qa-title">测试点说明</h4><span>资源账、动物状态与存档一致性</span></div>
+        <p class="qa-lead">围绕“收获、交易、扩张、解锁、自动化、保存与继续”梳理经营循环，优先检查资源是否正确流转，以及边界操作和跨界面操作是否破坏游戏状态。</p>
+        <p class="qa-scope"><strong>设计范围</strong>18 个维度 · 108 个测试点<span>已有 22 项隔离逻辑检查通过；不等同于 108 项完整执行或全量验收通过。</span></p>
+        <dl class="qa-topics">
+          <div><dt>动物收获与再生状态</dt><dd>检查成熟、收获中、再生中三个阶段能否重复领取产物；对羊的 12 秒再生边界和鹿的 3 秒无角停留、24 秒再生分别采样。保存与读档还需覆盖这些中间状态。</dd></div>
+          <div><dt>交易与资源一致性</dt><dd>按价格不足、恰好、超出设计边界；购买云地需同时满足 10 金币与 3 羊毛，任一不足都不能部分扣款。核对每笔成交只扣一次、只赠一只动物，空库存售卖不增钱。</dd></div>
+          <div><dt>土地、配方与建筑落位</dt><dd>检查四邻扩张、重复购地与地图连通；区分横向、纵向地形配方，验证解锁蓝图不会自动建造。每地块四槽，取消预览不收费，确认有效空槽才扣款。</dd></div>
+          <div><dt>牧场工与自动化</dt><dd>按已建建筑提供的名额验证招聘条件，检查多工人争抢同一成熟动物时是否重复收获。使用 U 形、L 形与窄通道地图，观察工人是否穿越未拥有地块。</dd></div>
+          <div><dt>存档与会话切换</dt><dd>覆盖三槽隔离、覆盖确认、跨进程恢复与保存失败；组合购地、建筑落位、收获中返回主页再读档，核对资源、动物、临时模式和镜头操作能否一致恢复。</dd></div>
+          <div><dt>输入、规模与体验</dt><dd>区分点按与拖动，检查从候选地块和动物上起拖是否误买或误收获。逐步增加地块、动物与工人，采集帧时间和内存；真实触屏、多平台、性能与完整自然推进仍待验证。</dd></div>
+        </dl>
+        <div class="qa-cases">
+          <details><summary><span>代表用例：金币够了，材料不够能不能买地？</span><span class="qa-case-state">部分逻辑已验证</span></summary><div class="qa-case-body"><p>前置：云土地块商店已建，存在合法相邻候选，使用独立测试存档。用双资源判定表同时检查成交与失败后的库存。</p><div class="qa-table-wrap"><table><caption>云地购买：金币与羊毛的边界组合</caption><thead><tr><th scope="col">金币 / 羊毛</th><th scope="col">预期结果</th><th scope="col">记录状态</th></tr></thead><tbody><tr><td>9 / 2、9 / 3</td><td>拒绝购买，库存不变</td><td>待执行</td></tr><tr><td>10 / 2</td><td>拒绝购买，不部分扣款</td><td>隔离检查通过</td></tr><tr><td>10 / 3</td><td>扣至 0 / 0，云地与羊驼各 +1</td><td>隔离检查通过</td></tr><tr><td>11 / 4</td><td>余 1 / 1，云地与羊驼各 +1</td><td>待执行</td></tr></tbody></table></div><p>报告中的 RUN-10/11 覆盖 10/2 与 10/3 两条逻辑路径；完整 GUI 输入与其他组合仍需执行。</p></div></details>
+          <details><summary><span>缺陷观察：读档成功后，为什么地图拖不动？</span><span class="qa-case-state">报告记录待修复</span></summary><div class="qa-case-body"><p>路径为“购地预览 → 保存并返回主页 → 继续游戏”。报告通过方法链路复现：候选节点已清空，但购买模式仍开启，导致正常镜头拖动被拦截。</p><p>预期应清理临时模式或完整恢复预览。重新开关购地入口可清理状态；修复后应扩展到建筑落位、仓库、不同存档槽的交叉回归，并补充真实 GUI 操作验证。</p></div></details>
+        </div>
+        <p class="qa-evidence"><strong>阶段验证记录</strong>报告记录 22/22 项隔离逻辑检查通过，并复现保存失败误报成功、读档购买模式残留、购地预览不能拖动、工人穿越未拥有地块 4 类问题；报告中均为待修复，尚未完成修复回归。</p>
+        <p class="qa-source">依据 2026-09-06《PastureLand 游戏测试分析与阶段验证报告》整理。材料为 AI 辅助分析与局部验证，存档逻辑使用内存替身；不代表实际写盘、全量人工或性能验收。</p>
+      </section>
+    </article>
+  </section>
+  <section class="perspective wrap" id="perspective" aria-labelledby="perspective-title">
+    <div class="perspective-intro"><p class="category">我的测试视角</p><h2 id="perspective-title">好体验，<br>藏在细节里。</h2><p>围绕这两款 Demo，<br>我关注这些值得验证的问题。</p></div>
+    <div class="questions">
+      <details open><summary>操作，是否得到正确回应？<span aria-hidden="true">+</span></summary><p>从移动、技能释放到建造点击，核对输入条件、可见反馈与最终状态，关注连续操作和无效操作时的表现。</p></details>
+      <details><summary>边界，会不会打断体验？<span aria-hidden="true">+</span></summary><p>围绕资源不足、场景边缘、重复点击等条件设计验证步骤，观察系统是否给出明确提示，并保持合理状态。</p></details>
+      <details><summary>状态，能否保持一致？<span aria-hidden="true">+</span></summary><p>对照界面信息与游戏实际状态，检查生命值、资源数量、设施变化，以及保存与重新进入后的状态是否一致。</p></details>
+      <p class="perspective-note">以上为项目测试关注方向，具体测试结论需以执行记录为准。</p>
+    </div>
+  </section>
+  <section class="contact wrap" aria-labelledby="contact-title"><div><p class="category">期待一次交流</p><h2 id="contact-title">一起把游戏体验<br>打磨得更好。</h2></div><div class="contact-info"><span>Horace / 游戏测试求职</span><a href="mailto:shr190329@163.com">shr190329@163.com <span aria-hidden="true">↗</span></a></div></section>
+</main>
+<footer class="wrap"><span>© 2026 Horace</span><span>个人学习 Demo 作品展示</span><a href="#top">回到顶部 ↑</a></footer>
+<script>
+// Keep the two recordings from talking over one another.
+const videos = [...document.querySelectorAll('video')];
+videos.forEach(video => {
+  video.addEventListener('play', () => videos.forEach(other => { if (other !== video) other.pause(); }));
+  video.addEventListener('error', () => {
+    if (video.parentElement.querySelector('.video-error')) return;
+    const message = document.createElement('p');
+    message.className = 'video-error';
+    message.setAttribute('role', 'status');
+    message.textContent = '视频暂时无法加载，请检查网络，或使用下方“单独打开视频”链接。';
+    video.after(message);
+  });
+});
+</script>
+</body>
+</html>
+
+
