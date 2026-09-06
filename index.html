@@ -35,7 +35,7 @@
     </div>
   </section>
   <section id="projects" class="projects wrap" aria-labelledby="projects-title">
-    <div class="section-heading"><h2 id="projects-title">项目作品<span>Selected work</span></h2><p>从即时战斗，到牧场经营。</p></div>
+    <div class="section-heading"><h2 id="projects-title">项目作品</h2></div>
     <article id="arena" class="project" aria-labelledby="arena-title">
       <div class="project-heading"><div><p class="category">战斗原型 / Unity</p><h3 id="arena-title">LOL 风格战斗 Demo</h3></div><span class="duration">实机演示 <b>01:09</b></span></div>
       <div class="player arena-player"><video controls playsinline preload="none" poster="media/arena.jpg?v=20260906-164709" aria-label="LOL 风格战斗 Demo 实机视频" aria-describedby="arena-description"><source src="media/arena.mp4?v=20260906-164709" type="video/mp4">你的浏览器不支持视频播放，请<a href="media/arena.mp4?v=20260906-164709">打开视频文件</a>。</video></div>
@@ -56,7 +56,7 @@
           <details><summary><span>历史案例：闪现后，下一次移动会不会回弹？</span><span class="qa-case-state">历史验证</span></summary><div class="qa-case-body"><p>将场景拆成“静止 / 移动 × 近目标 / 远目标”四组，记录闪现位置，再追加一次 CharacterController 移动，检查传送结果是否保持。</p><p>历史记录显示同组场景由 4 FAIL 变为 4 PASS：近点位移 3，远点截断到 5，后续移动不回弹；冷却内重复输入不再位移。树木落点、全方向和地图边缘仍需扩展回归。</p></div></details>
           <details><summary><span>历史案例：为什么只测半冷却会漏掉问题？</span><span class="qa-case-state">历史验证</span></summary><div class="qa-case-body"><p>旧遮罩公式把“就绪”和“刚释放”时的反馈方向反转，但在半冷却时，新旧公式结果都是 0.5。因此分别检查遮罩比例 0、1、0.5，才能覆盖两个关键端点。</p><p>历史直接冷却断言覆盖 Q，另有五个技能图标与两种画幅的检查；其余技能仍需逐个实际释放补充回归。</p></div></details>
         </div>
-        <p class="qa-source">依据 2026-09-06《LOL-demo 游戏测试分析报告》《测试点与详细用例》整理。历史案例为既有材料复盘，不计入新增用例通过率。</p>
+
       </section>
     </article>
     <article id="pasture" class="project pasture-project" aria-labelledby="pasture-title">
@@ -79,21 +79,21 @@
           <details><summary><span>代表用例：金币够了，材料不够能不能买地？</span><span class="qa-case-state">部分逻辑已验证</span></summary><div class="qa-case-body"><p>前置：云土地块商店已建，存在合法相邻候选，使用独立测试存档。用双资源判定表同时检查成交与失败后的库存。</p><div class="qa-table-wrap"><table><caption>云地购买：金币与羊毛的边界组合</caption><thead><tr><th scope="col">金币 / 羊毛</th><th scope="col">预期结果</th><th scope="col">记录状态</th></tr></thead><tbody><tr><td>9 / 2、9 / 3</td><td>拒绝购买，库存不变</td><td>待执行</td></tr><tr><td>10 / 2</td><td>拒绝购买，不部分扣款</td><td>隔离检查通过</td></tr><tr><td>10 / 3</td><td>扣至 0 / 0，云地与羊驼各 +1</td><td>隔离检查通过</td></tr><tr><td>11 / 4</td><td>余 1 / 1，云地与羊驼各 +1</td><td>待执行</td></tr></tbody></table></div><p>报告中的 RUN-10/11 覆盖 10/2 与 10/3 两条逻辑路径；完整 GUI 输入与其他组合仍需执行。</p></div></details>
           <details><summary><span>缺陷观察：读档成功后，为什么地图拖不动？</span><span class="qa-case-state">报告记录待修复</span></summary><div class="qa-case-body"><p>路径为“购地预览 → 保存并返回主页 → 继续游戏”。报告通过方法链路复现：候选节点已清空，但购买模式仍开启，导致正常镜头拖动被拦截。</p><p>预期应清理临时模式或完整恢复预览。重新开关购地入口可清理状态；修复后应扩展到建筑落位、仓库、不同存档槽的交叉回归，并补充真实 GUI 操作验证。</p></div></details>
         </div>
-        <p class="qa-evidence"><strong>阶段验证记录</strong>报告记录 22/22 项隔离逻辑检查通过，并复现保存失败误报成功、读档购买模式残留、购地预览不能拖动、工人穿越未拥有地块 4 类问题；报告中均为待修复，尚未完成修复回归。</p>
-        <p class="qa-source">依据 2026-09-06《PastureLand 游戏测试分析与阶段验证报告》整理。材料为 AI 辅助分析与局部验证，存档逻辑使用内存替身；不代表实际写盘、全量人工或性能验收。</p>
+
+
       </section>
     </article>
   </section>
   <section class="perspective wrap" id="perspective" aria-labelledby="perspective-title">
-    <div class="perspective-intro"><p class="category">我的测试视角</p><h2 id="perspective-title">好体验，<br>藏在细节里。</h2><p>围绕这两款 Demo，<br>我关注这些值得验证的问题。</p></div>
+    <div class="perspective-intro"><h2 id="perspective-title">测试方法</h2><p>按操作流程、数值边界和状态切换设计用例，明确前置条件、操作步骤与预期结果。</p></div>
     <div class="questions">
-      <details open><summary>操作，是否得到正确回应？<span aria-hidden="true">+</span></summary><p>从移动、技能释放到建造点击，核对输入条件、可见反馈与最终状态，关注连续操作和无效操作时的表现。</p></details>
-      <details><summary>边界，会不会打断体验？<span aria-hidden="true">+</span></summary><p>围绕资源不足、场景边缘、重复点击等条件设计验证步骤，观察系统是否给出明确提示，并保持合理状态。</p></details>
-      <details><summary>状态，能否保持一致？<span aria-hidden="true">+</span></summary><p>对照界面信息与游戏实际状态，检查生命值、资源数量、设施变化，以及保存与重新进入后的状态是否一致。</p></details>
+      <details open><summary>操作流程与反馈验证<span aria-hidden="true">+</span></summary><p>从移动、技能释放到建造点击，核对输入条件、可见反馈与最终状态，关注连续操作和无效操作时的表现。</p></details>
+      <details><summary>边界值与异常输入<span aria-hidden="true">+</span></summary><p>围绕资源不足、场景边缘、重复点击等条件设计验证步骤，观察系统是否给出明确提示，并保持合理状态。</p></details>
+      <details><summary>状态一致性与恢复验证<span aria-hidden="true">+</span></summary><p>对照界面信息与游戏实际状态，检查生命值、资源数量、设施变化，以及保存与重新进入后的状态是否一致。</p></details>
       <p class="perspective-note">以上为项目测试关注方向，具体测试结论需以执行记录为准。</p>
     </div>
   </section>
-  <section class="contact wrap" aria-labelledby="contact-title"><div><p class="category">期待一次交流</p><h2 id="contact-title">一起把游戏体验<br>打磨得更好。</h2></div><div class="contact-info"><span>Horace / 游戏测试求职</span><a href="mailto:shr190329@163.com">shr190329@163.com <span aria-hidden="true">↗</span></a></div></section>
+  <section class="contact wrap" aria-labelledby="contact-title"><div><h2 id="contact-title">联系方式</h2></div><div class="contact-info"><span>Horace\游戏方向求职</span><a href="mailto:shr190329@163.com">shr190329@163.com <span aria-hidden="true">↗</span></a></div></section>
 </main>
 <footer class="wrap"><span>© 2026 Horace</span><span>个人学习 Demo 作品展示</span><a href="#top">回到顶部 ↑</a></footer>
 <script>
